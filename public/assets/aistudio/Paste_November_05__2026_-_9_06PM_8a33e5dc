@@ -1,0 +1,2204 @@
+MASTER ARCHITECTURE PROMPT
+
+Global Cash Management System (GCMS)
+
+Domain-Driven Design (DDD), Business Context, Subdomains, Bounded Contexts, and Microservices Architecture
+
+⸻
+
+1. ROLE AND OBJECTIVE
+
+Act as a Principal Enterprise Architect, Domain-Driven Design (DDD) Architect, Banking Domain Expert, Treasury Architect, and Microservices Architect.
+
+Design a complete enterprise-grade Global Cash Management System (GCMS) for a multinational financial institution or large corporate treasury organization.
+
+The system should have business capabilities comparable in functional scope to global cash management platforms operated by major financial institutions such as Citi, Wells Fargo, and Bank of America.
+
+Your responsibility is to create a comprehensive architecture blueprint using:
+
+* Strategic Domain-Driven Design
+* Tactical Domain-Driven Design
+* Business Capability Modeling
+* Microservices Architecture
+* Event-Driven Architecture
+* CQRS
+* Eventual Consistency
+* Double-Entry Accounting
+* Enterprise Integration Patterns
+* Banking Transaction Lifecycle Management
+
+Do not begin by generating code.
+
+First create a detailed business architecture and domain architecture. Identify the business context, business domains, subdomains, bounded contexts, microservices, ownership boundaries, responsibilities, business rules, aggregates, entities, value objects, domain events, integration contracts, and dependencies.
+
+The architecture must be suitable for a large-scale enterprise financial application with multi-entity, multi-country, multi-currency, and high-volume transaction processing requirements.
+
+⸻
+
+2. BUSINESS CONTEXT
+
+2.1 Business System Definition
+
+GCMS is an enterprise platform responsible for managing, monitoring, optimizing, and accounting for cash and liquidity across a global network of legal entities, bank accounts, financial institutions, payment systems, and treasury operations.
+
+The platform must provide a centralized operational and financial view of cash across:
+
+* Parent entities
+* Child entities
+* Legal entities
+* Corporate entities
+* Bank accounts
+* Nostro accounts
+* Vostro accounts
+* Currency positions
+* Global liquidity pools
+* Payment transactions
+* Cash flows
+* Accounting ledgers
+* Financial reporting units
+
+The system must support both automated processing and manual operational handling.
+
+2.2 Business Objectives
+
+Define architecture to support the following objectives:
+
+1. Centralize global cash visibility.
+2. Optimize liquidity across legal entities.
+3. Automate cash realignment.
+4. Manage cash funding requirements.
+5. Handle cash adjustments.
+6. Receive actual and expected cash flows.
+7. Forecast future cash positions.
+8. Identify free cash and excess liquidity.
+9. Process real-time payment matching.
+10. Manage Nostro account liquidity.
+11. Reconcile bank statements and accounting records.
+12. Support multi-currency accounting.
+13. Consolidate cash positions across parent-child entities.
+14. Maintain accurate financial accounting.
+15. Support manual operations and exception resolution.
+16. Enforce maker-checker controls.
+17. Provide complete auditability.
+18. Integrate with external banking systems.
+19. Generate operational, treasury, accounting, and management reports.
+20. Support scalable, independent business services.
+
+2.3 Business Actors
+
+Identify and model the following actors:
+
+* Global Treasury Manager
+* Regional Treasury Manager
+* Cash Manager
+* Liquidity Manager
+* Cash Funding Operator
+* Cash Realignment Operator
+* Payment Operations Analyst
+* Reconciliation Analyst
+* Nostro Operations Analyst
+* Accounting Officer
+* Financial Controller
+* Operations Supervisor
+* Risk Manager
+* Compliance Officer
+* Business Administrator
+* System Administrator
+* Auditor
+* External Bank
+* Correspondent Bank
+* ERP System
+* Payment Gateway
+* General Ledger System
+
+For each actor, define:
+
+* Business role
+* Business responsibilities
+* Permissions
+* Owned activities
+* Approval authority
+* Interactions with bounded contexts
+
+⸻
+
+3. STRATEGIC DDD ARCHITECTURE
+
+Identify the complete business domain landscape.
+
+Classify domains into:
+
+Core Domains
+
+Business capabilities that provide the primary competitive and operational value.
+
+Supporting Domains
+
+Business capabilities necessary to operate GCMS but not the central differentiator.
+
+Generic Domains
+
+Common capabilities that can be implemented using standard reusable solutions.
+
+Do not classify all banking functionality as a core domain.
+
+Provide a detailed domain classification matrix.
+
+Domain	Subdomain	Classification	Business Value	Business Owner
+Cash Management	Cash Position	Core	Global cash visibility	Treasury
+Cash Management	Cash Realignment	Core	Cash optimization	Treasury
+Liquidity Management	Liquidity Optimization	Core	Liquidity efficiency	Treasury
+Payment Management	Payment Matching	Core	Transaction reconciliation	Payments
+Cash Forecasting	Cash Projection	Core	Liquidity planning	Treasury
+Accounting	General Ledger	Core/Supporting	Financial integrity	Finance
+Entity Management	Legal Entity Hierarchy	Supporting	Organizational structure	Finance
+Bank Connectivity	Statement Integration	Supporting	Banking data ingestion	Operations
+Security	Identity Management	Generic	Access control	IT
+Reporting	Report Generation	Supporting	Financial visibility	Finance
+
+Review and adjust these classifications according to the business context.
+
+⸻
+
+4. COMPLETE BUSINESS DOMAIN LANDSCAPE
+
+Create the following major business domains.
+
+DOMAIN 1 — CASH MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage global cash positions, cash movements, cash realignment, cash funding, cash adjustments, and available cash.
+
+Subdomains
+
+* Cash Position Management
+* Cash Realignment Management
+* Cash Funding Management
+* Cash Adjustment Management
+* Cash Balance Management
+* Cash Movement Management
+* Cash Concentration Management
+* Free Cash Management
+
+Candidate Bounded Contexts
+
+1. Cash Position Context
+2. Cash Realignment Context
+3. Cash Funding Context
+4. Cash Adjustment Context
+5. Cash Balance Context
+6. Cash Movement Context
+7. Free Cash Context
+
+Microservices
+
+* cash-position-service
+* cash-realignment-service
+* cash-funding-service
+* cash-adjustment-service
+* cash-balance-service
+* cash-movement-service
+* free-cash-service
+
+Responsibilities
+
+Cash Position Service
+
+* Calculate global cash positions.
+* Maintain account-level cash positions.
+* Calculate intraday and end-of-day balances.
+* Support entity and currency-level cash positions.
+* Generate cash position snapshots.
+* Maintain position calculation provenance.
+* Provide consolidated position queries.
+
+Cash Realignment Service
+
+* Identify surplus and deficit cash.
+* Generate realignment proposals.
+* Manage source and destination accounts.
+* Validate realignment eligibility.
+* Manage realignment lifecycle.
+* Generate transfer instructions.
+* Track realignment execution.
+* Publish realignment events.
+
+Cash Funding Service
+
+* Calculate funding requirements.
+* Identify eligible funding sources.
+* Manage funding requests.
+* Calculate funding amounts.
+* Manage funding priorities.
+* Manage funding approvals.
+* Track funding execution.
+* Identify funding shortfalls.
+
+Cash Adjustment Service
+
+* Create manual cash adjustments.
+* Validate adjustment requests.
+* Manage adjustment lifecycle.
+* Support reversal and replacement.
+* Generate accounting events.
+* Maintain adjustment audit history.
+
+Cash Balance Service
+
+* Maintain account cash balance projections.
+* Process balance-changing financial events.
+* Maintain balance snapshots.
+* Support book, available, and value-dated balances.
+* Enforce balance calculation rules.
+
+Free Cash Service
+
+* Calculate surplus and investable cash.
+* Identify trapped cash.
+* Identify restricted cash.
+* Apply minimum operational liquidity rules.
+* Generate free cash recommendations.
+
+Important architecture rule:
+
+Cash Position must not directly own payment transactions or accounting journal entries. It should consume authoritative events and build cash-position projections.
+
+⸻
+
+DOMAIN 2 — LIQUIDITY MANAGEMENT DOMAIN
+
+Business purpose:
+
+Optimize global liquidity across entities, accounts, currencies, and banking structures.
+
+Subdomains
+
+* Liquidity Planning
+* Liquidity Optimization
+* Cash Pooling
+* Liquidity Risk Monitoring
+* Liquidity Limits
+* Liquidity Allocation
+
+Bounded Contexts
+
+* Liquidity Planning Context
+* Liquidity Optimization Context
+* Cash Pooling Context
+* Liquidity Limits Context
+
+Microservices
+
+* liquidity-planning-service
+* liquidity-optimization-service
+* cash-pooling-service
+* liquidity-limits-service
+
+Responsibilities
+
+Liquidity Planning Service
+
+* Maintain liquidity requirements.
+* Calculate liquidity gaps.
+* Forecast liquidity needs.
+* Maintain minimum liquidity targets.
+
+Liquidity Optimization Service
+
+* Evaluate available cash across accounts.
+* Identify optimization opportunities.
+* Generate liquidity redistribution proposals.
+* Calculate liquidity efficiency.
+
+Cash Pooling Service
+
+* Manage physical cash pools.
+* Manage zero-balance structures.
+* Manage target-balance structures.
+* Maintain pooling rules.
+* Calculate pool-level balances.
+
+Liquidity Limits Service
+
+* Manage entity liquidity limits.
+* Manage account liquidity limits.
+* Manage currency limits.
+* Detect limit breaches.
+* Generate breach events.
+
+Cash Pooling must not execute bank transfers itself. It generates proposals or instructions that are handled by the appropriate execution service.
+
+⸻
+
+DOMAIN 3 — PAYMENT MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage payment instructions, payment processing lifecycle, payment matching, payment status, and payment exceptions.
+
+Subdomains
+
+* Payment Initiation
+* Payment Processing
+* Payment Matching
+* Payment Status Management
+* Payment Exception Management
+* Payment Returns
+* Payment Investigation
+
+Bounded Contexts
+
+* Payment Instruction Context
+* Payment Processing Context
+* Payment Matching Context
+* Payment Status Context
+* Payment Returns Context
+
+Microservices
+
+* payment-instruction-service
+* payment-processing-service
+* payment-matching-service
+* payment-status-service
+* payment-return-service
+* payment-investigation-service
+
+Responsibilities
+
+Payment Instruction Service
+
+* Receive payment instructions.
+* Validate payment instructions.
+* Maintain payment instruction lifecycle.
+* Support payment initiation.
+* Generate unique payment references.
+* Publish payment initiation events.
+
+Payment Processing Service
+
+* Process approved payment instructions.
+* Route payments to banking channels.
+* Manage execution status.
+* Handle retries and failures.
+* Track external payment acknowledgments.
+
+Payment Matching Service
+
+* Match payment records against bank statement transactions.
+* Apply configurable matching rules.
+* Support exact, partial, and fuzzy matching.
+* Support one-to-one and many-to-many matching.
+* Calculate matching confidence.
+* Manage manual matching.
+* Publish payment matching events.
+
+Payment Status Service
+
+* Maintain payment status.
+* Process bank status messages.
+* Track payment lifecycle.
+* Provide payment status inquiries.
+
+Payment Return Service
+
+* Process returned payments.
+* Validate return reasons.
+* Maintain return lifecycle.
+* Generate accounting events.
+
+Payment matching must not post directly to the General Ledger. It emits domain events consumed by accounting and reconciliation services.
+
+⸻
+
+DOMAIN 4 — CASH FLOW MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage actual, expected, and forecasted cash flows across the enterprise.
+
+Subdomains
+
+* Cash Flow Ingestion
+* Cash Flow Management
+* Cash Flow Classification
+* Cash Flow Forecasting
+* Cash Flow Projection
+* Forecast Accuracy Management
+
+Bounded Contexts
+
+* Cash Flow Context
+* Cash Flow Forecast Context
+* Cash Projection Context
+
+Microservices
+
+* cash-flow-service
+* cash-flow-ingestion-service
+* cash-flow-forecast-service
+* cash-projection-service
+* forecast-accuracy-service
+
+Responsibilities
+
+Cash Flow Service
+
+* Maintain cash flow records.
+* Manage incoming cash flows.
+* Manage outgoing cash flows.
+* Support expected and actual cash flows.
+* Manage cash flow classifications.
+* Maintain source references.
+
+Cash Flow Ingestion Service
+
+* Receive cash flow data.
+* Validate incoming data.
+* Normalize external formats.
+* Detect duplicate records.
+* Publish cash flow events.
+
+Cash Flow Forecast Service
+
+* Generate cash flow forecasts.
+* Support recurring transactions.
+* Apply forecast categories.
+* Generate forecast scenarios.
+* Estimate future cash flows.
+
+Cash Projection Service
+
+* Calculate future cash positions.
+* Combine current cash positions and expected cash flows.
+* Generate intraday, daily, weekly, and monthly projections.
+* Identify liquidity shortfalls.
+
+Forecast Accuracy Service
+
+* Compare forecasted versus actual cash flows.
+* Calculate forecast accuracy metrics.
+* Maintain historical forecast accuracy.
+
+Important:
+
+Forecasted cash flows and actual cash flows must be represented distinctly. Forecast data must not be treated as posted accounting transactions.
+
+⸻
+
+DOMAIN 5 — BANK ACCOUNT MANAGEMENT DOMAIN
+
+Business purpose:
+
+Maintain authoritative bank account information and account lifecycle management.
+
+Subdomains
+
+* Bank Account Registry
+* Account Lifecycle Management
+* Account Configuration
+* Account Limits
+* Account Classification
+
+Bounded Contexts
+
+* Bank Account Context
+* Account Configuration Context
+
+Microservices
+
+* bank-account-service
+* account-configuration-service
+* account-limits-service
+
+Responsibilities
+
+Bank Account Service
+
+* Create and maintain bank accounts.
+* Manage account ownership.
+* Maintain account identifiers.
+* Manage account lifecycle.
+* Associate accounts with legal entities.
+* Manage account currency.
+* Maintain account status.
+
+Account Configuration Service
+
+* Manage account-specific business rules.
+* Configure statement frequency.
+* Configure reconciliation rules.
+* Configure balance availability rules.
+* Configure account reporting behavior.
+
+Account Limits Service
+
+* Maintain account-level limits.
+* Validate account-level transactions.
+* Detect account limit breaches.
+
+The Bank Account Service is the authoritative owner of bank account master data.
+
+Other services must reference bank account IDs rather than duplicate account master records.
+
+⸻
+
+DOMAIN 6 — NOSTRO MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage correspondent banking accounts, Nostro liquidity, statement balances, funding, and reconciliation.
+
+Subdomains
+
+* Nostro Account Registry
+* Nostro Balance Management
+* Nostro Funding
+* Nostro Reconciliation
+* Correspondent Bank Management
+
+Bounded Contexts
+
+* Nostro Account Context
+* Nostro Liquidity Context
+* Nostro Reconciliation Context
+
+Microservices
+
+* nostro-account-service
+* nostro-liquidity-service
+* nostro-reconciliation-service
+* correspondent-bank-service
+
+Responsibilities
+
+Nostro Account Service
+
+* Maintain Nostro accounts.
+* Associate Nostro accounts with correspondent banks.
+* Maintain account currency.
+* Maintain account limits.
+* Manage account lifecycle.
+
+Nostro Liquidity Service
+
+* Monitor Nostro balances.
+* Calculate Nostro liquidity requirements.
+* Identify Nostro shortfalls.
+* Generate Nostro funding proposals.
+* Calculate excess Nostro liquidity.
+
+Nostro Reconciliation Service
+
+* Reconcile internal transaction records against Nostro statements.
+* Identify missing transactions.
+* Identify unmatched debits and credits.
+* Identify duplicate postings.
+* Manage reconciliation breaks.
+
+Correspondent Bank Service
+
+* Maintain correspondent bank details.
+* Maintain banking relationships.
+* Manage bank identifiers.
+* Maintain supported currencies and channels.
+
+⸻
+
+DOMAIN 7 — ENTITY MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage the global legal entity hierarchy and enterprise organizational structures.
+
+Subdomains
+
+* Legal Entity Management
+* Entity Hierarchy Management
+* Entity Configuration
+* Entity Relationship Management
+* Entity Consolidation
+
+Bounded Contexts
+
+* Legal Entity Context
+* Entity Hierarchy Context
+* Entity Configuration Context
+
+Microservices
+
+* legal-entity-service
+* entity-hierarchy-service
+* entity-configuration-service
+
+Responsibilities
+
+Legal Entity Service
+
+* Maintain legal entity master data.
+* Maintain legal entity identifiers.
+* Maintain entity country.
+* Maintain functional currency.
+* Maintain reporting currency.
+* Maintain legal status.
+
+Entity Hierarchy Service
+
+* Maintain parent-child relationships.
+* Validate hierarchy changes.
+* Prevent circular relationships.
+* Maintain hierarchy versions.
+* Support historical hierarchy queries.
+
+Entity Configuration Service
+
+* Configure entity-specific business rules.
+* Configure business calendars.
+* Configure entity reporting rules.
+* Configure entity-level permissions.
+
+Entity master data must have a single authoritative owner.
+
+⸻
+
+DOMAIN 8 — ACCOUNTING AND GENERAL LEDGER DOMAIN
+
+Business purpose:
+
+Maintain accounting integrity, double-entry journals, ledger balances, financial accounting, and accounting reconciliation.
+
+This is a critical financial domain.
+
+Subdomains
+
+* Accounting Event Management
+* Journal Management
+* General Ledger
+* Chart of Accounts
+* Subledger Accounting
+* Intercompany Accounting
+* FX Accounting
+* Trial Balance
+* Period Closing
+* Financial Accounting Controls
+
+Bounded Contexts
+
+* Accounting Event Context
+* Journal Posting Context
+* General Ledger Context
+* Chart of Accounts Context
+* Intercompany Accounting Context
+* FX Accounting Context
+* Accounting Period Context
+
+Microservices
+
+* accounting-event-service
+* journal-posting-service
+* general-ledger-service
+* chart-of-accounts-service
+* intercompany-accounting-service
+* fx-accounting-service
+* accounting-period-service
+* trial-balance-service
+
+Responsibilities
+
+Accounting Event Service
+
+* Receive financial business events.
+* Apply accounting event classification.
+* Resolve applicable accounting policies.
+* Generate accounting event records.
+* Produce accounting posting requests.
+
+Journal Posting Service
+
+* Generate journal entries.
+* Validate debit-credit balance.
+* Validate accounting period.
+* Validate GL account mapping.
+* Apply posting rules.
+* Post journal entries.
+* Support reversals.
+* Enforce journal immutability.
+
+General Ledger Service
+
+* Maintain ledger balances.
+* Maintain posted journal references.
+* Provide account-level ledger queries.
+* Generate ledger balance projections.
+* Maintain ledger history.
+
+Chart of Accounts Service
+
+* Maintain the chart of accounts.
+* Define account classifications.
+* Define account attributes.
+* Define account hierarchy.
+* Validate GL account usage.
+
+Intercompany Accounting Service
+
+* Manage intercompany accounting events.
+* Generate intercompany journal entries.
+* Maintain intercompany receivable/payable relationships.
+* Support intercompany reconciliation.
+* Support elimination entries for consolidation.
+
+FX Accounting Service
+
+* Manage FX valuation events.
+* Calculate FX gains and losses.
+* Apply FX accounting policies.
+* Generate FX accounting entries.
+
+Accounting Period Service
+
+* Maintain accounting periods.
+* Manage period opening and closing.
+* Prevent posting to closed periods.
+* Support controlled period reopening.
+
+Trial Balance Service
+
+* Generate trial balances.
+* Aggregate ledger balances.
+* Validate debit and credit totals.
+* Support entity and consolidated trial balances.
+
+Critical accounting rule:
+
+No operational microservice may directly modify posted General Ledger balances.
+
+All financial postings must go through the Journal Posting Service and the defined accounting lifecycle.
+
+⸻
+
+DOMAIN 9 — FX AND MULTI-CURRENCY MANAGEMENT DOMAIN
+
+Business purpose:
+
+Manage currency metadata, FX rates, currency conversions, valuation, and reporting currency translation.
+
+Subdomains
+
+* Currency Registry
+* FX Rate Management
+* FX Conversion
+* FX Valuation
+* Currency Exposure
+* FX Translation
+
+Bounded Contexts
+
+* Currency Context
+* FX Rate Context
+* FX Conversion Context
+* FX Valuation Context
+* Currency Exposure Context
+
+Microservices
+
+* currency-service
+* fx-rate-service
+* fx-conversion-service
+* fx-valuation-service
+* currency-exposure-service
+
+Responsibilities
+
+Currency Service
+
+* Maintain supported currencies.
+* Maintain currency precision.
+* Maintain currency metadata.
+* Maintain currency status.
+
+FX Rate Service
+
+* Receive FX rates.
+* Maintain rate sources.
+* Maintain rate effective dates.
+* Maintain historical rates.
+* Validate rate quality.
+
+FX Conversion Service
+
+* Perform currency conversion.
+* Apply rate direction.
+* Apply precision and rounding.
+* Provide conversion details.
+* Maintain rate provenance.
+
+FX Valuation Service
+
+* Calculate FX valuation.
+* Calculate unrealized gains and losses.
+* Generate valuation events.
+
+Currency Exposure Service
+
+* Calculate currency exposures.
+* Aggregate positions by currency.
+* Identify FX concentration risks.
+
+FX Rate Service must not own payment transactions or accounting journals.
+
+⸻
+
+DOMAIN 10 — RECONCILIATION DOMAIN
+
+Business purpose:
+
+Reconcile bank transactions, internal payments, cash flows, Nostro records, and accounting records.
+
+Subdomains
+
+* Bank Reconciliation
+* Payment Reconciliation
+* Cash Flow Reconciliation
+* Nostro Reconciliation
+* General Ledger Reconciliation
+* Reconciliation Exception Management
+
+Bounded Contexts
+
+* Bank Reconciliation Context
+* Payment Reconciliation Context
+* GL Reconciliation Context
+* Reconciliation Break Context
+
+Microservices
+
+* bank-reconciliation-service
+* payment-reconciliation-service
+* gl-reconciliation-service
+* reconciliation-break-service
+
+Responsibilities
+
+Bank Reconciliation Service
+
+* Compare internal cash records with bank statement records.
+* Identify matched and unmatched records.
+* Detect discrepancies.
+* Maintain reconciliation results.
+
+Payment Reconciliation Service
+
+* Reconcile payment instructions with execution records.
+* Reconcile payments against bank confirmations.
+* Maintain payment reconciliation status.
+
+GL Reconciliation Service
+
+* Compare operational financial records with GL postings.
+* Identify missing or duplicate accounting entries.
+* Identify ledger discrepancies.
+
+Reconciliation Break Service
+
+* Maintain reconciliation breaks.
+* Classify break types.
+* Track break ownership.
+* Manage resolution lifecycle.
+* Track break aging and SLA.
+
+Reconciliation services own reconciliation outcomes and break records, not the underlying bank account or payment master records.
+
+⸻
+
+DOMAIN 11 — BANK CONNECTIVITY AND INTEGRATION DOMAIN
+
+Business purpose:
+
+Provide secure and reliable integration between GCMS and external banking, payment, ERP, and financial systems.
+
+Subdomains
+
+* Bank Connectivity
+* Statement Ingestion
+* Payment Message Processing
+* Banking Message Validation
+* ERP Integration
+* External Data Mapping
+
+Bounded Contexts
+
+* Bank Connectivity Context
+* Statement Ingestion Context
+* Banking Message Context
+* External Integration Context
+
+Microservices
+
+* bank-connectivity-service
+* bank-statement-ingestion-service
+* banking-message-service
+* external-integration-service
+* message-validation-service
+
+Responsibilities
+
+Bank Connectivity Service
+
+* Manage bank communication channels.
+* Manage bank connection configuration.
+* Handle API, SFTP, and host-to-host connectivity.
+* Monitor connectivity status.
+
+Bank Statement Ingestion Service
+
+* Receive bank statements.
+* Parse bank statement files.
+* Normalize statement records.
+* Publish bank statement transaction events.
+
+Banking Message Service
+
+* Manage ISO 20022 messages.
+* Process SWIFT MX messages.
+* Manage message lifecycle.
+* Maintain message references.
+* Support message replay.
+
+External Integration Service
+
+* Integrate with ERP systems.
+* Integrate with external treasury systems.
+* Integrate with banking systems.
+* Normalize external financial data.
+
+Message Validation Service
+
+* Validate external message structure.
+* Validate mandatory fields.
+* Validate message schemas.
+* Generate validation errors.
+
+Connectivity services must not contain treasury decision-making or accounting policy logic.
+
+⸻
+
+DOMAIN 12 — OPERATIONS AND EXCEPTION MANAGEMENT DOMAIN
+
+Business purpose:
+
+Enable manual operations handling, investigation, exception resolution, workflow management, and operational control.
+
+Subdomains
+
+* Operations Task Management
+* Exception Management
+* Investigation Management
+* SLA Management
+* Case Management
+* Operational Workflow
+
+Bounded Contexts
+
+* Operations Workbench Context
+* Exception Context
+* Investigation Context
+* SLA Context
+
+Microservices
+
+* operations-task-service
+* exception-management-service
+* investigation-service
+* sla-management-service
+* operations-workflow-service
+
+Responsibilities
+
+Operations Task Service
+
+* Create operational tasks.
+* Assign tasks to users.
+* Maintain task ownership.
+* Track task lifecycle.
+* Support task prioritization.
+
+Exception Management Service
+
+* Maintain operational exceptions.
+* Classify exceptions.
+* Manage exception status.
+* Track exception resolution.
+
+Investigation Service
+
+* Manage financial transaction investigations.
+* Collect investigation evidence.
+* Maintain investigation comments.
+* Link related transactions.
+
+SLA Management Service
+
+* Define operational SLA rules.
+* Calculate SLA deadlines.
+* Monitor breaches.
+* Generate escalation events.
+
+Operations Workflow Service
+
+* Coordinate operational task workflows.
+* Manage task transitions.
+* Handle escalation.
+* Manage operational dependencies.
+
+The Operations domain must not directly change the accounting ledger. Any financial correction must initiate the appropriate business transaction.
+
+⸻
+
+DOMAIN 13 — APPROVAL AND WORKFLOW DOMAIN
+
+Business purpose:
+
+Manage authorization, maker-checker, multi-level approvals, delegation, and business workflow controls.
+
+Subdomains
+
+* Approval Management
+* Workflow Configuration
+* Authorization Rules
+* Delegation Management
+
+Bounded Contexts
+
+* Approval Context
+* Workflow Configuration Context
+* Delegation Context
+
+Microservices
+
+* approval-service
+* workflow-configuration-service
+* approval-delegation-service
+
+Responsibilities
+
+Approval Service
+
+* Manage approval requests.
+* Validate approval eligibility.
+* Apply approval policies.
+* Manage approval decisions.
+* Support rejection and resubmission.
+* Maintain approval history.
+
+Workflow Configuration Service
+
+* Define workflow templates.
+* Configure approval stages.
+* Configure amount thresholds.
+* Configure entity-specific approval rules.
+
+Approval Delegation Service
+
+* Manage temporary delegation.
+* Validate delegation validity.
+* Maintain delegation history.
+
+Approval service must not own the transaction being approved.
+
+It stores approval state and references the business transaction through its unique ID and domain type.
+
+The originating business domain remains authoritative for transaction status and execution.
+
+⸻
+
+DOMAIN 14 — REPORTING AND ANALYTICS DOMAIN
+
+Business purpose:
+
+Provide operational, treasury, accounting, and management reporting.
+
+Subdomains
+
+* Cash Reporting
+* Liquidity Reporting
+* Payment Reporting
+* Accounting Reporting
+* Multi-Currency Reporting
+* Forecast Reporting
+* Management Analytics
+
+Bounded Contexts
+
+* Cash Reporting Context
+* Accounting Reporting Context
+* Liquidity Reporting Context
+* Management Analytics Context
+
+Microservices
+
+* cash-reporting-service
+* accounting-reporting-service
+* liquidity-reporting-service
+* payment-reporting-service
+* multi-currency-reporting-service
+* management-analytics-service
+
+Responsibilities
+
+Cash Reporting Service
+
+* Generate global cash position reports.
+* Generate entity cash reports.
+* Generate account cash reports.
+* Generate cash movement reports.
+
+Accounting Reporting Service
+
+* Generate trial balance reports.
+* Generate GL reports.
+* Generate accounting journal reports.
+* Generate financial statements.
+
+Liquidity Reporting Service
+
+* Generate liquidity gap reports.
+* Generate funding reports.
+* Generate free cash reports.
+
+Multi-Currency Reporting Service
+
+* Convert reporting amounts.
+* Generate currency exposure reports.
+* Generate consolidated currency reports.
+* Apply reporting currency translation rules.
+
+Management Analytics Service
+
+* Generate management dashboards.
+* Calculate operational KPIs.
+* Calculate liquidity metrics.
+* Support trend analysis.
+
+Reporting services should primarily consume read models and analytical data.
+
+Do not make reporting services the authoritative owners of transactional data.
+
+⸻
+
+DOMAIN 15 — SECURITY, CONFIGURATION, AND AUDIT DOMAIN
+
+Business purpose:
+
+Provide enterprise-wide security, administration, configuration, and audit capabilities.
+
+Subdomains
+
+* Identity Management
+* Access Management
+* Role Management
+* Permission Management
+* Audit Management
+* Business Configuration
+* Reference Data Management
+
+Bounded Contexts
+
+* Identity Context
+* Authorization Context
+* Audit Context
+* Configuration Context
+* Reference Data Context
+
+Microservices
+
+* identity-service
+* authorization-service
+* audit-service
+* business-configuration-service
+* reference-data-service
+
+Responsibilities
+
+Identity Service
+
+* Manage user identity.
+* Manage authentication.
+* Support identity federation.
+* Manage user lifecycle.
+
+Authorization Service
+
+* Manage role-based access.
+* Enforce entity-level permissions.
+* Enforce account-level permissions.
+* Enforce operation-level permissions.
+
+Audit Service
+
+* Record critical business actions.
+* Record approval decisions.
+* Maintain audit event history.
+* Provide audit search and reporting.
+
+Business Configuration Service
+
+* Maintain configurable business rules.
+* Manage operational thresholds.
+* Manage configurable processing parameters.
+* Manage feature configuration.
+
+Reference Data Service
+
+* Maintain shared reference data.
+* Manage country codes.
+* Manage banking identifiers.
+* Manage payment types.
+* Manage transaction classifications.
+
+Reference data ownership must be explicitly defined. Avoid creating a generic service that becomes the owner of every business entity.
+
+⸻
+
+5. DDD BOUNDED CONTEXT DESIGN
+
+For every bounded context, create a detailed specification.
+
+Each specification must contain:
+
+1. Bounded Context Name
+2. Business Domain
+3. Subdomain
+4. Business Purpose
+5. Business Scope
+6. Functional Responsibilities
+7. Explicitly Excluded Responsibilities
+8. Business Owner
+9. Domain Experts
+10. Primary Actors
+11. Ubiquitous Language
+12. Aggregate Roots
+13. Entities
+14. Value Objects
+15. Domain Services
+16. Domain Events
+17. Commands
+18. Queries
+19. Invariants
+20. Business Rules
+21. State Transitions
+22. Database Ownership
+23. API Responsibilities
+24. Integration Dependencies
+25. Upstream Contexts
+26. Downstream Contexts
+27. Security Requirements
+28. Audit Requirements
+29. Transaction Boundaries
+30. Failure Handling
+
+Do not create overlapping bounded contexts with the same authoritative data ownership.
+
+⸻
+
+6. TACTICAL DDD DESIGN
+
+For each core bounded context, define the following.
+
+6.1 Aggregate Design
+
+Identify aggregate roots and aggregate boundaries.
+
+Example: Cash Realignment Context
+
+Aggregate Root:
+CashRealignment
+
+Entities:
+
+* RealignmentInstruction
+* RealignmentLeg
+* RealignmentApprovalReference
+
+Value Objects:
+
+* Money
+* Currency
+* AccountReference
+* EntityReference
+* BusinessDate
+* RealignmentStatus
+
+Domain Services:
+
+* RealignmentEligibilityService
+* RealignmentCalculationService
+* RealignmentValidationService
+
+Domain Events:
+
+* CashRealignmentCreated
+* CashRealignmentValidated
+* CashRealignmentSubmitted
+* CashRealignmentApproved
+* CashRealignmentRejected
+* CashRealignmentExecuted
+* CashRealignmentFailed
+* CashRealignmentCompleted
+
+Commands:
+
+* CreateCashRealignment
+* ValidateCashRealignment
+* SubmitCashRealignment
+* ApproveCashRealignment
+* RejectCashRealignment
+* ExecuteCashRealignment
+* CancelCashRealignment
+
+Queries:
+
+* GetCashRealignment
+* GetCashRealignmentHistory
+* GetPendingRealignments
+* GetRealignmentByEntity
+
+Invariants:
+
+* Source and destination accounts must be valid.
+* Source and destination accounts must be eligible.
+* Realignment amount must be positive.
+* Currency rules must be satisfied.
+* Approval must be completed before execution.
+* Maker cannot approve their own request.
+* Executed realignment cannot be directly modified.
+
+Repeat this level of design for:
+
+* Cash Position
+* Cash Funding
+* Cash Adjustment
+* Cash Flow
+* Cash Projection
+* Free Cash
+* Payment Instruction
+* Payment Matching
+* Bank Account
+* Nostro Account
+* Legal Entity
+* FX Conversion
+* Journal Posting
+* Reconciliation
+* Operations Task
+* Approval Request
+
+6.2 Value Object Standards
+
+Create reusable domain value objects.
+
+Examples:
+
+* Money
+* CurrencyCode
+* FXRate
+* AccountReference
+* EntityReference
+* BankReference
+* TransactionReference
+* PaymentReference
+* UETR
+* BusinessDate
+* ValueDate
+* AccountingDate
+* Percentage
+* AmountTolerance
+* LiquidityThreshold
+* LedgerReference
+
+Define:
+
+* Validation rules
+* Equality behavior
+* Immutability
+* Precision
+* Serialization
+
+Money must contain amount and currency.
+
+Do not represent financial amounts using floating-point types.
+
+⸻
+
+7. MICROSERVICE OWNERSHIP MODEL
+
+Create a service ownership matrix.
+
+For each microservice, define:
+
+* Service Name
+* Bounded Context
+* Domain
+* Subdomain
+* Business Owner
+* Technical Owner
+* Primary Responsibility
+* Authoritative Data
+* Database Ownership
+* Commands Accepted
+* Queries Supported
+* Events Published
+* Events Consumed
+* External Dependencies
+* Internal Dependencies
+* APIs Exposed
+* Security Requirements
+* Operational Responsibilities
+* Scaling Characteristics
+
+Database Ownership Rules
+
+Implement database-per-service logical ownership.
+
+Each service must own its data model.
+
+Services must not directly read or write another service’s tables.
+
+Cross-service data access must happen through:
+
+* APIs
+* Domain events
+* Integration events
+* Read models
+* Explicit data contracts
+
+Shared infrastructure databases may be used, but business tables must not be jointly owned.
+
+⸻
+
+8. CONTEXT MAP
+
+Create a complete DDD Context Map.
+
+Identify relationships between bounded contexts using:
+
+* Upstream / Downstream
+* Customer / Supplier
+* Conformist
+* Anti-Corruption Layer
+* Published Language
+* Open Host Service
+* Shared Kernel
+* Partnership
+
+For every relationship, explain:
+
+* Why the relationship exists
+* Which context is upstream
+* Which context is downstream
+* Which data is exchanged
+* Which integration mechanism is used
+* Which context owns the source data
+* Which context owns the resulting state
+
+Example:
+
+Bank Account Context
+→ Cash Position Context
+
+Relationship:
+Published Language / Customer-Supplier
+
+Bank Account Context provides account master data.
+
+Cash Position Context consumes account metadata and maintains its own cash position projection.
+
+Bank Account Context remains the authoritative owner of account master data.
+
+Cash Position Context owns cash position calculations.
+
+Generate both a textual context map and a Mermaid diagram.
+
+⸻
+
+9. DOMAIN EVENT ARCHITECTURE
+
+Design an event-driven architecture.
+
+Use Kafka or an equivalent enterprise event streaming platform.
+
+Define the following event categories:
+
+Cash Events
+
+* CashPositionCalculated
+* CashBalanceUpdated
+* CashRealignmentCreated
+* CashRealignmentExecuted
+* CashFundingRequested
+* CashFundingExecuted
+* CashAdjustmentPosted
+* FreeCashCalculated
+
+Payment Events
+
+* PaymentInstructionCreated
+* PaymentInstructionValidated
+* PaymentSubmitted
+* PaymentAccepted
+* PaymentRejected
+* PaymentSettled
+* PaymentReturned
+* PaymentMatched
+
+Cash Flow Events
+
+* CashFlowReceived
+* CashFlowValidated
+* CashFlowForecastGenerated
+* CashProjectionCalculated
+
+Accounting Events
+
+* AccountingEventCreated
+* JournalPostingRequested
+* JournalPosted
+* JournalRejected
+* JournalReversed
+* LedgerBalanceUpdated
+
+Reconciliation Events
+
+* ReconciliationStarted
+* TransactionMatched
+* ReconciliationBreakCreated
+* ReconciliationBreakResolved
+* ReconciliationCompleted
+
+Operations Events
+
+* OperationsTaskCreated
+* OperationsTaskAssigned
+* OperationsTaskEscalated
+* OperationsTaskResolved
+* ExceptionRaised
+* ExceptionResolved
+
+For each event define:
+
+* Event Name
+* Event Producer
+* Event Consumer
+* Event Schema
+* Event Version
+* Event Timestamp
+* Business Date
+* Correlation ID
+* Causation ID
+* Aggregate ID
+* Entity ID
+* Source Reference
+* Idempotency Key
+
+Use schema versioning and backward-compatible event evolution.
+
+⸻
+
+10. CROSS-DOMAIN BUSINESS WORKFLOWS
+
+Design end-to-end workflows spanning multiple domains.
+
+Workflow A — Cash Realignment
+
+Cash Position
+→ Free Cash
+→ Liquidity Optimization
+→ Cash Realignment
+→ Approval
+→ Payment Processing
+→ Bank Connectivity
+→ Payment Status
+→ Cash Position Update
+→ Accounting Event
+→ Journal Posting
+→ Reconciliation
+→ Reporting
+
+Explain the responsibility of every domain and service.
+
+Workflow B — Cash Funding
+
+Cash Position
+→ Liquidity Planning
+→ Cash Funding
+→ Liquidity Limits
+→ Approval
+→ Payment Processing
+→ Bank Connectivity
+→ Payment Status
+→ Accounting
+→ Cash Position Update
+→ Reconciliation
+
+Workflow C — Incoming Payment
+
+Bank Connectivity
+→ Statement Ingestion
+→ Payment Matching
+→ Cash Flow Management
+→ Cash Position
+→ Accounting Event
+→ Journal Posting
+→ Reconciliation
+→ Reporting
+
+Workflow D — Cash Adjustment
+
+Cash Adjustment
+→ Validation
+→ Approval
+→ Accounting Event
+→ Journal Posting
+→ Cash Position Update
+→ Reconciliation
+→ Audit
+
+Workflow E — Nostro Reconciliation
+
+Bank Statement Ingestion
+→ Nostro Account
+→ Nostro Reconciliation
+→ Payment Matching
+→ Reconciliation Break Management
+→ Operations Workbench
+→ Accounting
+→ Reporting
+
+Workflow F — Multi-Entity Cash Consolidation
+
+Legal Entity Management
+→ Bank Account Management
+→ Cash Position
+→ FX Conversion
+→ Entity Consolidation
+→ Multi-Currency Reporting
+→ Management Analytics
+
+For each workflow provide:
+
+* Business trigger
+* Preconditions
+* Commands
+* Domain events
+* Service interactions
+* Business validations
+* Transaction boundaries
+* Failure scenarios
+* Compensation actions
+* Final business outcome
+
+⸻
+
+11. SAGA AND DISTRIBUTED TRANSACTION DESIGN
+
+Identify all workflows requiring distributed transaction coordination.
+
+Use:
+
+* Saga orchestration
+* Saga choreography
+* Transactional outbox
+* Idempotent consumers
+* Retry policies
+* Dead-letter queues
+* Compensation transactions
+
+Define a Saga for:
+
+* Cash Realignment
+* Cash Funding
+* Payment Execution
+* Intercompany Transfer
+* Cash Adjustment
+* Reconciliation Resolution
+
+For each Saga define:
+
+Step	Service	Action	Success Event	Failure Action	Compensation
+
+Do not use distributed two-phase commit as the default architecture.
+
+Important financial control:
+
+A compensation action must not erase a completed financial transaction.
+
+Use explicit reversal or compensating transactions.
+
+A transfer that has been externally executed cannot be cancelled merely by changing its database status.
+
+⸻
+
+12. CQRS AND READ MODEL DESIGN
+
+Define where CQRS is appropriate.
+
+Separate:
+
+* Command models
+* Query models
+* Aggregate state
+* Read projections
+
+Create the following read models:
+
+* Global Cash Position Read Model
+* Entity Cash Position Read Model
+* Account Cash Position Read Model
+* Payment Matching Read Model
+* Funding Dashboard Read Model
+* Free Cash Read Model
+* Nostro Dashboard Read Model
+* Reconciliation Dashboard Read Model
+* Operations Task Read Model
+* Accounting Reporting Read Model
+* Multi-Currency Consolidation Read Model
+
+Define:
+
+* Projection source events
+* Projection update logic
+* Projection ownership
+* Rebuild strategy
+* Eventual consistency expectations
+* Read model refresh requirements
+
+Do not introduce CQRS into every simple CRUD service unnecessarily.
+
+⸻
+
+13. BUSINESS RULE OWNERSHIP
+
+Create a business rules ownership matrix.
+
+Examples:
+
+Business Rule	Owning Context
+Cash position calculation	Cash Position
+Free cash eligibility	Free Cash
+Realignment eligibility	Cash Realignment
+Funding requirement	Cash Funding
+Payment matching criteria	Payment Matching
+Account lifecycle	Bank Account
+Entity hierarchy validity	Entity Hierarchy
+FX conversion precision	FX Conversion
+Journal balancing	Journal Posting
+GL account validity	Chart of Accounts
+Reconciliation break classification	Reconciliation Break
+Approval authority	Approval
+SLA calculation	SLA Management
+Reporting currency translation	Multi-Currency Reporting
+
+Business rules must be defined in the owning bounded context.
+
+Do not duplicate authoritative business logic across microservices.
+
+⸻
+
+14. MICROSERVICE DEPENDENCY RULES
+
+Create a service dependency graph.
+
+Enforce these principles:
+
+1. No circular service dependencies.
+2. No direct database access across services.
+3. No shared business domain models.
+4. No shared database tables for authoritative business data.
+5. No synchronous call chains involving too many services.
+6. Use asynchronous events for non-blocking integration.
+7. Keep domain logic within the owning bounded context.
+8. Use anti-corruption layers for external systems.
+9. Use explicit integration contracts.
+10. Avoid distributed transactions where possible.
+
+Identify services that should remain independent.
+
+Identify services that should be merged if they do not justify independent deployment.
+
+Do not create excessive microservices merely to increase service count.
+
+⸻
+
+15. DOMAIN-DRIVEN API DESIGN
+
+For every microservice, generate API specifications.
+
+Include:
+
+* REST APIs
+* Commands
+* Queries
+* Request DTOs
+* Response DTOs
+* Validation
+* Error codes
+* Authorization
+* Idempotency
+* API versioning
+
+Use consistent naming.
+
+Example:
+
+POST /api/v1/cash-realignments
+
+GET /api/v1/cash-realignments/{realignmentId}
+
+POST /api/v1/cash-realignments/{realignmentId}/submit
+
+POST /api/v1/cash-realignments/{realignmentId}/approve
+
+POST /api/v1/cash-realignments/{realignmentId}/execute
+
+GET /api/v1/cash-positions/consolidated
+
+GET /api/v1/entities/{entityId}/cash-position
+
+POST /api/v1/payment-matching/process
+
+GET /api/v1/reconciliation-breaks
+
+POST /api/v1/journal-postings
+
+Do not expose internal aggregate persistence structures directly through API contracts.
+
+⸻
+
+16. TECHNICAL ARCHITECTURE
+
+Design a complete architecture with:
+
+* API Gateway
+* Identity Service
+* Domain Microservices
+* Event Bus
+* Kafka
+* PostgreSQL
+* Redis
+* Read Model Databases
+* Reporting Data Warehouse
+* External Banking Integration Layer
+* ERP Integration Layer
+* Observability Platform
+
+Recommended technical stack:
+
+Backend:
+
+* Java 21+
+* Spring Boot
+* Spring Cloud
+* Spring Data JPA
+* Spring Security
+* Spring Modulith where appropriate
+* Apache Kafka
+* PostgreSQL
+* Redis
+* Debezium
+* OpenTelemetry
+
+Frontend:
+
+* React
+* TypeScript
+* Tailwind CSS
+* Recharts
+
+API:
+
+* REST
+* OpenAPI
+* AsyncAPI for event contracts
+
+Deployment:
+
+* Docker
+* Kubernetes
+
+Explain which technologies belong to the infrastructure layer and which belong to the domain layer.
+
+The domain model must remain independent of infrastructure implementation details.
+
+⸻
+
+17. PROJECT STRUCTURE
+
+Generate a recommended repository structure.
+
+Use a modular monorepo initially, with clear service boundaries.
+
+Example:
+
+gcms-platform/
+│
+├── apps/
+│   ├── gcms-web/
+│   └── gcms-admin/
+│
+├── services/
+│   ├── cash-position-service/
+│   ├── cash-realignment-service/
+│   ├── cash-funding-service/
+│   ├── cash-adjustment-service/
+│   ├── cash-flow-service/
+│   ├── cash-projection-service/
+│   ├── free-cash-service/
+│   ├── liquidity-planning-service/
+│   ├── payment-instruction-service/
+│   ├── payment-processing-service/
+│   ├── payment-matching-service/
+│   ├── bank-account-service/
+│   ├── nostro-account-service/
+│   ├── legal-entity-service/
+│   ├── entity-hierarchy-service/
+│   ├── fx-rate-service/
+│   ├── fx-conversion-service/
+│   ├── journal-posting-service/
+│   ├── general-ledger-service/
+│   ├── reconciliation-service/
+│   ├── operations-task-service/
+│   ├── exception-management-service/
+│   ├── approval-service/
+│   ├── cash-reporting-service/
+│   ├── audit-service/
+│   └── bank-connectivity-service/
+│
+├── platform/
+│   ├── api-gateway/
+│   ├── identity/
+│   ├── kafka/
+│   ├── observability/
+│   └── configuration/
+│
+├── contracts/
+│   ├── api/
+│   ├── events/
+│   └── schemas/
+│
+├── infrastructure/
+│   ├── docker/
+│   ├── kubernetes/
+│   ├── terraform/
+│   └── monitoring/
+│
+├── architecture/
+│   ├── business-context/
+│   ├── domains/
+│   ├── bounded-contexts/
+│   ├── context-maps/
+│   ├── event-catalog/
+│   ├── api-catalog/
+│   └── adr/
+│
+└── documentation/
+
+This is an initial repository proposal. Finalize the service list after bounded context analysis.
+
+⸻
+
+18. ARCHITECTURE DIAGRAMS
+
+Generate Mermaid diagrams for:
+
+1. Business Context Diagram
+2. Global Business Domain Landscape
+3. Subdomain Classification
+4. Bounded Context Map
+5. Microservice Architecture
+6. Service Dependency Graph
+7. Event-Driven Architecture
+8. Cash Realignment Workflow
+9. Cash Funding Workflow
+10. Payment Matching Workflow
+11. Accounting Posting Workflow
+12. Nostro Reconciliation Workflow
+13. Parent-Child Entity Hierarchy
+14. CQRS Read Model Architecture
+15. Saga Orchestration
+16. Deployment Architecture
+
+Every diagram must reflect the defined domain ownership and service responsibilities.
+
+Do not create diagrams that conflict with the service ownership matrix.
+
+⸻
+
+19. REQUIRED ARCHITECTURE DOCUMENTS
+
+Generate the following documents.
+
+Document	Required Content
+Business Context Document	Business goals, stakeholders, actors, external systems
+Business Capability Map	Capabilities and business value
+Domain Landscape	Domains, subdomains, classifications
+Bounded Context Catalog	Scope, responsibilities, ownership
+Context Map	Relationships between bounded contexts
+Microservice Catalog	Service names, responsibilities, APIs, ownership
+Aggregate Catalog	Aggregate roots, entities, value objects
+Domain Event Catalog	Event names, producers, consumers, schemas
+Business Rules Catalog	Rules and authoritative owners
+API Catalog	REST endpoints, commands, queries
+Data Ownership Matrix	Database and entity ownership
+Workflow Catalog	End-to-end business processes
+Saga Catalog	Distributed transaction coordination
+Architecture Decision Records	Important architecture decisions
+Security Architecture	Authentication, authorization, audit
+Deployment Architecture	Infrastructure, deployment, scalability
+Testing Strategy	Unit, integration, contract, E2E tests
+
+⸻
+
+20. REQUIRED OUTPUT FORMAT
+
+Generate the architecture in the following order.
+
+Deliverable 1
+
+Business Context and Business Capability Model.
+
+Deliverable 2
+
+Domain Landscape with Core, Supporting, and Generic Domains.
+
+Deliverable 3
+
+Complete Domain/Subdomain/Bounded Context hierarchy.
+
+Deliverable 4
+
+Detailed Bounded Context specifications.
+
+Deliverable 5
+
+Microservice Catalog with detailed role and responsibility.
+
+Deliverable 6
+
+Aggregate Roots, Entities, Value Objects, Domain Services, and Invariants.
+
+Deliverable 7
+
+Context Map and service dependency diagram.
+
+Deliverable 8
+
+Domain Event Catalog and integration contracts.
+
+Deliverable 9
+
+Cross-domain business workflows.
+
+Deliverable 10
+
+Saga and distributed transaction designs.
+
+Deliverable 11
+
+Database ownership and data model design.
+
+Deliverable 12
+
+API catalog and event schema definitions.
+
+Deliverable 13
+
+CQRS architecture and reporting read models.
+
+Deliverable 14
+
+Technical architecture and deployment model.
+
+Deliverable 15
+
+Architecture Decision Records.
+
+Deliverable 16
+
+Implementation roadmap and service development sequence.
+
+⸻
+
+21. ARCHITECTURE QUALITY GATES
+
+Before finalizing the architecture, perform a critical architecture review.
+
+Validate:
+
+* Are all business capabilities represented?
+* Are all bounded contexts clearly defined?
+* Is each bounded context owned by one business domain?
+* Does every microservice have a clear business responsibility?
+* Is authoritative data ownership unambiguous?
+* Are any microservices unnecessarily small?
+* Are any microservices too large?
+* Are business rules duplicated?
+* Are circular dependencies present?
+* Are accounting boundaries correctly defined?
+* Is payment processing separated from payment matching?
+* Is cash position separated from cash accounting?
+* Is cash projection separated from actual cash processing?
+* Is bank account master data separate from Nostro operational management?
+* Is reconciliation separated from transaction processing?
+* Is approval separated from business transaction ownership?
+* Is reporting separated from transactional processing?
+* Are manual operational processes supported?
+* Are all important domain events defined?
+* Are failure scenarios and compensating transactions defined?
+* Are entity-level and currency-level business rules configurable?
+* Is the architecture suitable for independent service deployment?
+
+For each issue found, provide:
+
+* Issue
+* Business impact
+* Architectural impact
+* Recommended correction
+
+⸻
+
+22. FINAL INSTRUCTION
+
+Produce a complete enterprise DDD architecture for GCMS.
+
+Do not provide a high-level generic microservices explanation.
+
+Do not simply list service names.
+
+Provide a detailed and business-driven architecture where every domain, subdomain, bounded context, microservice, aggregate, event, API, and database ownership boundary is explicitly defined.
+
+Prioritize:
+
+* Banking business correctness
+* Financial accounting integrity
+* Clear domain ownership
+* Enterprise scalability
+* Operational resilience
+* Maintainability
+* Auditability
+* Integration flexibility
+
+The output must be detailed enough for:
+
+* Enterprise Architects
+* Domain Architects
+* Solution Architects
+* Business Analysts
+* Backend Developers
+* Frontend Developers
+* Database Architects
+* Integration Engineers
+* QA Engineers
+* DevOps Engineers
+
+to use as the foundational architecture blueprint for implementing the GCMS application.
+
+Start with the Business Context Diagram and Domain Landscape. Do not generate application code until the architecture documents have been completed and reviewed.

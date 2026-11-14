@@ -1,0 +1,2018 @@
+MASTER PROMPT — GLOBAL CASH MANAGEMENT SYSTEM (GCMS)
+
+1. Project Overview
+
+Build a complete enterprise-grade Global Cash Management System (GCMS) named Global Treasury & Cash Operations Platform.
+
+The system must be designed for large multinational banking and corporate treasury environments, with capabilities comparable in functional scope to global transaction banking and treasury platforms used by institutions such as Citi, Wells Fargo, and Bank of America.
+
+The application must support complex financial operations across:
+
+* Multiple countries
+* Multiple legal entities
+* Parent and child entity hierarchies
+* Multiple currencies
+* Multiple bank accounts
+* Multiple payment systems
+* Multiple accounting ledgers
+* Multiple business units
+* Multiple time zones
+* Multiple banking calendars
+
+The application should be a fully functional enterprise application, not just a dashboard or UI prototype.
+
+Implement all major modules, screens, workflows, APIs, data models, validations, accounting logic, reporting, exception handling, and operational controls.
+
+Use realistic simulated financial data initially. The architecture must allow future integration with actual banking systems, payment processors, ERP platforms, SWIFT, and accounting systems.
+
+Do not use proprietary source code, trademarks, or internal implementations from any specific bank. Build an original enterprise cash management platform with industry-standard functionality.
+
+⸻
+
+2. Technology Stack
+
+Use the following technology stack.
+
+Frontend
+
+* React
+* TypeScript
+* Tailwind CSS
+* Shadcn UI
+* Recharts
+* React Query
+* React Hook Form
+* Zod
+* Zustand
+* Lucide icons
+
+Backend
+
+* Node.js
+* TypeScript
+* Fastify
+* REST APIs
+* OpenAPI / Swagger
+
+Database
+
+* PostgreSQL
+* Prisma ORM
+
+Messaging and Real-Time Processing
+
+* Redis
+* BullMQ
+* WebSockets
+* Event-driven architecture
+
+Authentication and Security
+
+* JWT
+* OAuth2 / OpenID Connect
+* Role-based access control
+* Multi-factor authentication-ready architecture
+* Maker-checker approval controls
+
+Deployment
+
+* Docker
+* Docker Compose
+* Kubernetes-ready architecture
+* Environment-based configuration
+
+The frontend and backend must be separate modules.
+
+⸻
+
+3. Enterprise Application Layout
+
+Create a modern banking-grade enterprise interface.
+
+Main Application Shell
+
+Header
+
+Include:
+
+* Application logo: Global Cash Management
+* Global search
+* Entity selector
+* Account selector
+* Currency selector
+* Business date selector
+* Notification center
+* Task inbox
+* User profile
+* Environment indicator
+* Logout
+
+Left Navigation Menu
+
+Create a collapsible sidebar with the following modules:
+
+1. Dashboard
+2. Cash Position
+3. Cash Realignment
+4. Cash Funding
+5. Cash Adjustment
+6. Cash Flow Management
+7. Cash Projection
+8. Free Cash Management
+9. Payment Matching
+10. Reconciliation
+11. Bank Account Management
+12. Nostro Management
+13. Entity Management
+14. Liquidity Management
+15. Accounting & General Ledger
+16. Multi-Currency Management
+17. Reporting & Analytics
+18. Operations Workbench
+19. Exception Management
+20. Approval Management
+21. Audit & Compliance
+22. Configuration & Administration
+
+Each menu item must navigate to a real functional page.
+
+⸻
+
+4. Global Cash Management Dashboard
+
+Build a comprehensive global cash management dashboard.
+
+KPI Cards
+
+Display:
+
+* Total Global Cash Balance
+* Available Cash
+* Book Cash
+* Value-Dated Cash
+* Free Cash
+* Restricted Cash
+* Cash Inflows
+* Cash Outflows
+* Net Cash Position
+* Total Funded Amount
+* Pending Cash Realignment
+* Pending Cash Adjustments
+* Unmatched Payments
+* Unreconciled Transactions
+* Nostro Balances
+* Liquidity Coverage
+* Forecasted Cash Position
+
+Each KPI must support:
+
+* Amount
+* Currency
+* Percentage change
+* Previous business date comparison
+* Trend indicator
+* Click-through to detailed records
+
+Dashboard Visualizations
+
+Implement:
+
+* Global cash position by currency
+* Cash position by country
+* Cash position by legal entity
+* Cash position by bank
+* Cash position by account
+* Cash inflow versus outflow
+* Daily cash movements
+* Cash forecast for the next 7, 30, and 90 days
+* Free cash versus required cash
+* Funding requirement heatmap
+* Payment matching status
+* Reconciliation status
+
+Include filters:
+
+* Business date
+* Country
+* Parent entity
+* Child entity
+* Bank
+* Account
+* Currency
+* Business unit
+
+Dashboard figures must be derived from database records and business calculations.
+
+⸻
+
+5. Cash Position Management
+
+Build a complete Cash Position Management module.
+
+The module must consolidate cash balances from all bank accounts, entities, currencies, and financial systems.
+
+Cash Position Types
+
+Support:
+
+* Opening Balance
+* Closing Balance
+* Book Balance
+* Available Balance
+* Ledger Balance
+* Value-Dated Balance
+* Intraday Balance
+* End-of-Day Balance
+* Projected Balance
+* Restricted Balance
+* Unrestricted Balance
+
+Cash Position Calculation
+
+Calculate:
+
+Closing Balance = Opening Balance + Total Credits - Total Debits
+
+Available Cash = Book Balance - Restricted Cash - Pending Outgoing Payments + Eligible Incoming Payments
+
+Projected Cash = Current Cash Position + Forecasted Inflows - Forecasted Outflows
+
+Implement configurable business rules for availability and value dating.
+
+Cash Position Features
+
+* Consolidated cash position
+* Account-level cash position
+* Entity-level cash position
+* Currency-level cash position
+* Country-level cash position
+* Intraday cash position
+* Historical cash position
+* Future cash position
+* Position snapshots
+* Cash position comparison
+* Cash position drill-down
+
+Provide a detailed transaction view explaining how every cash balance was calculated.
+
+⸻
+
+6. Cash Realignment Management
+
+Build a complete Cash Realignment module.
+
+Cash realignment is the process of moving or redistributing cash between accounts, entities, currencies, or liquidity pools to optimize liquidity.
+
+Realignment Types
+
+* Account-to-Account Realignment
+* Entity-to-Entity Realignment
+* Parent-to-Child Realignment
+* Child-to-Parent Realignment
+* Intercompany Cash Transfer
+* Liquidity Pool Realignment
+* Currency Realignment
+* Surplus Cash Realignment
+* Deficit Cash Realignment
+* Cross-Border Realignment
+
+Realignment Workflow
+
+1. Identify surplus cash.
+2. Identify liquidity-deficit accounts.
+3. Calculate required transfer amount.
+4. Identify eligible source and destination accounts.
+5. Generate realignment proposal.
+6. Validate account status and currency.
+7. Validate transfer limits.
+8. Calculate applicable FX conversion.
+9. Generate funding instructions.
+10. Submit for approval.
+11. Execute or simulate the transfer.
+12. Receive bank confirmation.
+13. Update cash positions.
+14. Generate accounting entries.
+15. Reconcile the transfer.
+16. Close the realignment request.
+
+Realignment Screen
+
+Fields:
+
+* Realignment ID
+* Business Date
+* Source Entity
+* Source Account
+* Source Currency
+* Source Available Balance
+* Destination Entity
+* Destination Account
+* Destination Currency
+* Destination Balance
+* Realignment Amount
+* FX Rate
+* Converted Amount
+* Realignment Type
+* Priority
+* Reason
+* Execution Date
+* Value Date
+* Status
+* Maker
+* Checker
+
+Statuses:
+
+* Draft
+* Proposed
+* Pending Validation
+* Pending Approval
+* Approved
+* Rejected
+* Scheduled
+* Submitted
+* Processing
+* Completed
+* Failed
+* Cancelled
+
+Support bulk realignment proposals.
+
+⸻
+
+7. Cash Funding Management
+
+Build a comprehensive Cash Funding module.
+
+The system must identify cash deficits and generate funding requests.
+
+Funding Types
+
+* Internal Funding
+* External Bank Funding
+* Intercompany Funding
+* Short-Term Funding
+* Overnight Funding
+* Intraday Funding
+* Emergency Funding
+* FX Funding
+* Liquidity Pool Funding
+* Nostro Funding
+
+Funding Calculation
+
+Funding Requirement = Minimum Required Cash - Available Cash
+
+If funding requirement is positive, generate a funding request.
+
+If available cash exceeds the minimum required amount, identify surplus cash.
+
+Funding Workflow
+
+* Identify deficit account
+* Calculate funding requirement
+* Determine funding source
+* Generate funding request
+* Check limits and thresholds
+* Apply priority rules
+* Submit for approval
+* Generate funding instruction
+* Execute funding
+* Receive bank confirmation
+* Update balances
+* Post accounting entries
+* Reconcile funding transaction
+
+Funding Dashboard
+
+Display:
+
+* Total Funding Requirement
+* Pending Funding
+* Approved Funding
+* Executed Funding
+* Failed Funding
+* Intraday Funding
+* Overnight Funding
+* Funding by Entity
+* Funding by Currency
+
+⸻
+
+8. Cash Adjustment Management
+
+Create a Cash Adjustment module for manual and system-generated balance adjustments.
+
+Adjustment Types
+
+* Bank Fee Adjustment
+* Interest Adjustment
+* FX Adjustment
+* Value-Date Adjustment
+* Opening Balance Adjustment
+* Closing Balance Adjustment
+* Suspense Account Adjustment
+* Reconciliation Adjustment
+* Correction Entry
+* Cash Position Adjustment
+* Intercompany Adjustment
+
+Adjustment Fields
+
+* Adjustment ID
+* Entity
+* Account
+* Currency
+* Adjustment Type
+* Debit Amount
+* Credit Amount
+* Adjustment Reason
+* Reference Transaction
+* Accounting Date
+* Value Date
+* Original Amount
+* Adjusted Amount
+* Difference
+* Supporting Document
+* Maker
+* Checker
+* Status
+
+Adjustment Workflow
+
+Draft → Validate → Submit → Approve → Post → Reconcile → Complete
+
+All adjustments must maintain audit trails.
+
+Never allow users to directly modify posted accounting entries.
+
+Corrections to posted transactions must be handled through reversal and replacement entries.
+
+⸻
+
+9. Cash Flow Management
+
+Build a Cash Flow Management module.
+
+The system must receive and process cash flow information from:
+
+* Bank statements
+* Payment systems
+* Accounts Payable
+* Accounts Receivable
+* ERP systems
+* Intercompany transactions
+* Loan repayments
+* Treasury transactions
+* Investment transactions
+* Manual operational inputs
+
+Cash Flow Types
+
+* Incoming Cash Flow
+* Outgoing Cash Flow
+* Expected Incoming Payment
+* Expected Outgoing Payment
+* Actual Cash Flow
+* Forecasted Cash Flow
+* Recurring Cash Flow
+* Intercompany Cash Flow
+* Investment Cash Flow
+* Loan Cash Flow
+
+Cash Flow Management Screen
+
+Fields:
+
+* Cash Flow ID
+* Entity
+* Account
+* Currency
+* Cash Flow Type
+* Counterparty
+* Payment Reference
+* Amount
+* Expected Date
+* Value Date
+* Actual Date
+* Source System
+* Forecast Category
+* Status
+
+Features
+
+* Create manual cash flow
+* Import cash flow files
+* Receive cash flows through APIs
+* Validate cash flow records
+* Detect duplicate cash flows
+* Update expected cash flows
+* Match actual versus expected cash flows
+* Identify overdue cash flows
+* Cancel or amend eligible cash flows
+
+⸻
+
+10. Cash Projection and Forecasting
+
+Build an advanced Cash Projection module.
+
+Forecasting Horizons
+
+* Intraday
+* End of Day
+* Next Business Day
+* 7 Days
+* 30 Days
+* 90 Days
+* Monthly
+* Quarterly
+* Annual
+
+Forecasting Inputs
+
+* Opening Cash Balance
+* Confirmed Payments
+* Expected Receipts
+* Accounts Payable
+* Accounts Receivable
+* Payroll
+* Tax Payments
+* Loan Payments
+* Investment Maturities
+* Intercompany Transfers
+* Funding Requests
+* Historical Cash Flows
+* Recurring Transactions
+* Manual Adjustments
+
+Projection Formula
+
+Projected Closing Cash = Opening Cash + Forecasted Inflows - Forecasted Outflows
+
+Projected Free Cash = Projected Closing Cash - Minimum Liquidity Requirement - Restricted Cash
+
+Features
+
+* Base forecast
+* Optimistic forecast
+* Pessimistic forecast
+* Scenario-based forecasting
+* Forecast versus actual
+* Forecast accuracy
+* Forecast confidence levels
+* Historical trend analysis
+* Liquidity gap analysis
+* Funding gap analysis
+* Surplus cash analysis
+
+Include configurable thresholds for cash shortages and surplus cash.
+
+⸻
+
+11. Free Cash Management
+
+Create a dedicated Free Cash Management module.
+
+Free cash represents available liquidity after considering operational requirements, restrictions, funding obligations, and minimum liquidity reserves.
+
+Free Cash Calculation
+
+Free Cash = Eligible Available Cash - Minimum Operational Cash - Restricted Cash - Required Funding Reserves
+
+Make the formula configurable by entity, account, currency, and liquidity policy.
+
+Features
+
+* Identify surplus cash
+* Identify idle cash
+* Identify trapped cash
+* Identify restricted cash
+* Identify investable cash
+* Identify excess cash by entity
+* Generate cash investment suggestions
+* Generate cash realignment suggestions
+* Generate liquidity optimization proposals
+
+Include a Free Cash Dashboard with:
+
+* Global Free Cash
+* Free Cash by Entity
+* Free Cash by Currency
+* Free Cash by Country
+* Idle Cash
+* Trapped Cash
+* Investable Cash
+* Cash Surplus Trend
+
+All recommendations must be explainable and subject to approval.
+
+⸻
+
+12. Real-Time Payment Matching
+
+Build a Real-Time Payment Matching module.
+
+The system must match incoming and outgoing payments against bank statements, cash flows, payment instructions, and accounting records.
+
+Matching Sources
+
+* SWIFT payment messages
+* ISO 20022 payment messages
+* Bank statement transactions
+* Internal payment records
+* ERP payment records
+* Accounts Receivable
+* Accounts Payable
+* Nostro statements
+* Internal cash flow records
+
+Matching Attributes
+
+* Payment Reference
+* End-to-End ID
+* UETR
+* Transaction ID
+* Account Number
+* IBAN
+* Amount
+* Currency
+* Value Date
+* Counterparty
+* Debtor
+* Creditor
+* Remittance Information
+* Bank Reference
+* Transaction Type
+
+Matching Engine
+
+Implement configurable matching rules.
+
+Exact Matching
+
+Match:
+
+* Exact payment reference
+* Exact amount
+* Exact currency
+* Exact account
+* Exact value date
+
+Partial Matching
+
+Support:
+
+* Amount tolerance
+* Date tolerance
+* Reference similarity
+* Counterparty matching
+
+Advanced Matching
+
+Support:
+
+* One-to-one matching
+* One-to-many matching
+* Many-to-one matching
+* Many-to-many matching
+* Partial payments
+* Split payments
+* Consolidated payments
+* FX-adjusted matching
+
+Matching Status
+
+* Unmatched
+* Matched
+* Partially Matched
+* Potential Match
+* Duplicate
+* Exception
+* Manually Matched
+* Reconciled
+
+Real-Time Processing
+
+Use event-driven processing.
+
+When a payment event is received:
+
+1. Validate payment data.
+2. Check duplicate records.
+3. Identify relevant account and entity.
+4. Retrieve matching candidates.
+5. Apply matching rules.
+6. Calculate match score.
+7. Auto-match eligible transactions.
+8. Send ambiguous transactions to operations.
+9. Update cash position.
+10. Generate accounting events.
+11. Update reconciliation status.
+
+Provide a manual matching interface with side-by-side transaction comparison.
+
+⸻
+
+13. Bank Account Management
+
+Create a Bank Account Management module.
+
+Account Types
+
+* Current Account
+* Savings Account
+* Operating Account
+* Collection Account
+* Disbursement Account
+* Pool Account
+* Settlement Account
+* Nostro Account
+* Vostro Account
+* Escrow Account
+* Investment Account
+* Suspense Account
+* Virtual Account
+
+Account Information
+
+* Account ID
+* Account Name
+* Account Number
+* IBAN
+* SWIFT/BIC
+* Bank Name
+* Bank Branch
+* Country
+* Currency
+* Legal Entity
+* Parent Entity
+* Account Type
+* Account Purpose
+* Opening Date
+* Closing Date
+* Account Status
+* Overdraft Limit
+* Minimum Balance
+* Maximum Balance
+* Bank Connectivity Type
+* Statement Frequency
+* Reconciliation Configuration
+* GL Account Mapping
+
+Support account lifecycle management.
+
+Statuses:
+
+* Pending
+* Active
+* Suspended
+* Dormant
+* Closed
+
+⸻
+
+14. Nostro Account Management
+
+Build a dedicated Nostro Management module.
+
+Nostro accounts are accounts held by an institution with another bank, usually in a foreign currency.
+
+Nostro Account Features
+
+* Nostro Account Registry
+* Correspondent Bank Management
+* Nostro Balance Management
+* Nostro Funding
+* Nostro Cash Position
+* Nostro Statement Processing
+* Nostro Reconciliation
+* Nostro Limit Management
+* Nostro Forecasting
+* Nostro Shortfall Identification
+* Nostro Excess Cash Identification
+
+Nostro Monitoring
+
+Display:
+
+* Nostro Account
+* Correspondent Bank
+* Currency
+* Book Balance
+* Bank Statement Balance
+* Available Balance
+* Expected Inflows
+* Expected Outflows
+* Forecasted Balance
+* Minimum Required Balance
+* Funding Requirement
+* Reconciliation Status
+
+Nostro Reconciliation
+
+Match:
+
+* Internal payment records
+* Bank statements
+* SWIFT confirmations
+* Settlement transactions
+* GL postings
+
+Provide automated and manual reconciliation.
+
+⸻
+
+15. Parent and Child Entity Management
+
+Build a comprehensive Legal Entity Management module.
+
+Support complex multinational corporate structures.
+
+Entity Hierarchy
+
+Example:
+
+Global Holding Company
+
+* North America Holding
+    * US Operating Entity
+    * Canada Operating Entity
+* Europe Holding
+    * UK Operating Entity
+    * Germany Operating Entity
+    * France Operating Entity
+* Asia Pacific Holding
+    * India Operating Entity
+    * Singapore Operating Entity
+    * Japan Operating Entity
+
+The hierarchy must be configurable and not hardcoded.
+
+Entity Attributes
+
+* Entity ID
+* Entity Name
+* Entity Type
+* Parent Entity ID
+* Country
+* Region
+* Base Currency
+* Functional Currency
+* Reporting Currency
+* Accounting Standard
+* Fiscal Year
+* Time Zone
+* Business Calendar
+* Tax Identifier
+* LEI
+* Status
+
+Features
+
+* Create entity
+* Edit entity
+* Assign parent entity
+* Create child entity
+* Move entity within hierarchy
+* View entity tree
+* View consolidated cash position
+* View entity cash position
+* View intercompany transactions
+* View entity-specific reports
+* Configure entity limits
+* Configure entity liquidity rules
+
+Consolidation
+
+Consolidate cash positions across the parent and child hierarchy.
+
+Support:
+
+* Parent-level reporting
+* Child-level reporting
+* Consolidated reporting
+* Intercompany elimination
+* Currency translation
+* Entity-level drill-down
+
+Prevent invalid circular parent-child relationships.
+
+⸻
+
+16. Multi-Currency Management
+
+Build a complete Multi-Currency Management module.
+
+Supported Currency Types
+
+* Transaction Currency
+* Account Currency
+* Functional Currency
+* Base Currency
+* Reporting Currency
+
+Initially support:
+
+* USD
+* EUR
+* GBP
+* INR
+* JPY
+* CHF
+* SGD
+* CAD
+* AUD
+* AED
+
+Allow additional currencies through configuration.
+
+FX Management
+
+* FX Rate Registry
+* Spot Rates
+* Historical Rates
+* Forward Rates
+* Rate Source Management
+* Rate Validation
+* FX Conversion
+* FX Gain/Loss
+* Currency Exposure
+* Currency Position
+* FX Valuation
+
+FX Conversion
+
+Converted Amount = Original Amount × Applicable FX Rate
+
+Support configurable rate direction, precision, and rounding.
+
+Do not use floating-point arithmetic for financial calculations. Use decimal precision.
+
+Multi-Currency Reporting
+
+Provide:
+
+* Original Currency Reporting
+* Functional Currency Reporting
+* Group Reporting Currency
+* Consolidated Currency Reporting
+* FX Translation
+* FX Gain/Loss Reporting
+* Currency Exposure Reporting
+
+Include reporting currency conversion with an effective date and identifiable FX rate source.
+
+⸻
+
+17. Liquidity Management
+
+Build a complete Liquidity Management module.
+
+Features
+
+* Global Liquidity Position
+* Liquidity Pool Management
+* Cash Pooling
+* Zero Balance Account
+* Target Balance Account
+* Notional Pooling
+* Physical Cash Pooling
+* Liquidity Optimization
+* Liquidity Forecast
+* Liquidity Gap Analysis
+* Liquidity Risk Monitoring
+* Minimum Cash Thresholds
+* Liquidity Limits
+
+Support:
+
+* Parent-level liquidity pools
+* Child-level liquidity pools
+* Cross-border liquidity pools
+* Multi-currency liquidity pools
+
+Cash pooling must be configurable by jurisdiction, account eligibility, currency, and banking agreement.
+
+⸻
+
+18. Accounting and General Ledger
+
+Build a robust Accounting & General Ledger module.
+
+This module is mandatory.
+
+All financial operations must generate accounting events and, where applicable, balanced journal entries.
+
+Accounting Features
+
+* Chart of Accounts
+* General Ledger
+* Subledger
+* Journal Entries
+* Accounting Events
+* Trial Balance
+* Debit/Credit Balances
+* Account Reconciliation
+* Intercompany Accounting
+* FX Accounting
+* Accrual Accounting
+* Period Closing
+* Reversal Entries
+* Suspense Accounting
+* Financial Statements
+* Accounting Period Management
+
+Double-Entry Accounting
+
+Every posted journal must satisfy:
+
+Total Debits = Total Credits
+
+Sample Accounting Entry
+
+Cash Funding:
+
+Debit: Bank Cash Account
+
+Credit: Intercompany Funding Payable
+
+Cash Transfer:
+
+Debit: Destination Bank Account
+
+Credit: Source Bank Account
+
+Bank Charges:
+
+Debit: Bank Charges Expense
+
+Credit: Bank Cash Account
+
+FX Gain:
+
+Debit: FX Clearing / Revaluation Account
+
+Credit: FX Gain Account
+
+The exact accounting treatment must be configurable by transaction type, entity, currency, accounting policy, and event.
+
+Journal Entry Fields
+
+* Journal ID
+* Accounting Event ID
+* Entity
+* Ledger
+* Accounting Date
+* Value Date
+* Currency
+* GL Account
+* Debit Amount
+* Credit Amount
+* Transaction Reference
+* Source System
+* Posting Status
+* Reversal Reference
+
+Accounting Controls
+
+* Balanced journal validation
+* Closed-period validation
+* Duplicate journal detection
+* Account validation
+* Currency validation
+* Entity validation
+* Posting authorization
+* Maker-checker approval
+* Reversal workflow
+* Audit trail
+
+Posted entries must be immutable.
+
+⸻
+
+19. Reporting and Analytics
+
+Create a comprehensive enterprise reporting platform.
+
+Cash Management Reports
+
+1. Global Cash Position Report
+2. Daily Cash Position Report
+3. Intraday Cash Position Report
+4. Cash Position by Entity
+5. Cash Position by Account
+6. Cash Position by Currency
+7. Cash Position by Country
+8. Cash Realignment Report
+9. Cash Funding Report
+10. Cash Adjustment Report
+11. Free Cash Report
+12. Cash Flow Report
+13. Cash Projection Report
+14. Forecast versus Actual Report
+15. Payment Matching Report
+16. Reconciliation Report
+17. Nostro Position Report
+18. Nostro Reconciliation Report
+19. Liquidity Gap Report
+20. Intercompany Cash Report
+
+Accounting Reports
+
+1. General Ledger Report
+2. Trial Balance
+3. Journal Entry Report
+4. Suspense Account Report
+5. FX Gain/Loss Report
+6. Intercompany Accounting Report
+7. Period Closing Report
+8. Financial Statement Report
+9. Debit/Credit Summary
+10. Audit Trail Report
+
+Multi-Currency Reports
+
+* Currency Exposure
+* Currency Position
+* FX Translation
+* FX Valuation
+* Consolidated Cash Position
+* Currency-wise Cash Flow
+* Functional Currency Reporting
+* Group Currency Reporting
+
+Reporting Features
+
+* Dynamic report filters
+* Date range selection
+* Entity hierarchy filters
+* Currency filters
+* Account filters
+* Bank filters
+* Drill-down
+* Drill-through
+* Sorting
+* Pagination
+* Column customization
+* Saved report configurations
+* Scheduled reporting
+* Export to Excel
+* Export to CSV
+* Export to PDF
+* Report versioning
+* Report execution history
+
+All reports must use actual database calculations.
+
+⸻
+
+20. Operations Workbench — Manual Operations Handling
+
+Build a comprehensive Operations Workbench.
+
+This is one of the most important modules.
+
+The application must support both automated processing and manual operations handling.
+
+Operations Dashboard
+
+Display:
+
+* Pending Operations
+* Unmatched Payments
+* Failed Payments
+* Cash Position Exceptions
+* Funding Exceptions
+* Reconciliation Breaks
+* Pending Adjustments
+* Pending Approvals
+* Failed Accounting Postings
+* Nostro Breaks
+* Data Validation Errors
+* SLA Breaches
+
+Operations Task Inbox
+
+Each task must contain:
+
+* Task ID
+* Task Type
+* Priority
+* Business Date
+* Entity
+* Account
+* Currency
+* Amount
+* Reference ID
+* Source System
+* Assigned Operator
+* Created Date
+* SLA Due Date
+* Status
+
+Manual Operations Actions
+
+Operators must be able to:
+
+* Investigate a transaction
+* Review source data
+* Review related transactions
+* Perform manual matching
+* Correct eligible data
+* Request a cash adjustment
+* Request a funding operation
+* Create a realignment request
+* Reassign an operation
+* Add comments
+* Attach supporting documents
+* Escalate an issue
+* Mark a task as resolved
+* Submit an item for approval
+
+Operations Workflow
+
+New → Assigned → In Progress → Pending Information → Pending Approval → Resolved → Closed
+
+Include:
+
+* Task ownership
+* Task history
+* SLA monitoring
+* Priority handling
+* Escalation rules
+* Operator comments
+* Evidence management
+
+⸻
+
+21. Exception Management
+
+Build an Exception Management module.
+
+Exception Types
+
+* Payment Matching Exception
+* Cash Position Exception
+* Funding Exception
+* Realignment Exception
+* Accounting Posting Exception
+* FX Rate Exception
+* Nostro Reconciliation Exception
+* Duplicate Transaction
+* Invalid Account
+* Invalid Entity
+* Missing Reference
+* Currency Mismatch
+* Value-Date Mismatch
+* Limit Breach
+* Bank Statement Exception
+* Forecast Variance Exception
+
+Exception Features
+
+* Exception creation
+* Exception classification
+* Severity assignment
+* Auto-assignment
+* Manual assignment
+* Investigation
+* Resolution
+* Escalation
+* Exception aging
+* SLA tracking
+* Root-cause analysis
+* Exception reporting
+
+Severity:
+
+* Critical
+* High
+* Medium
+* Low
+
+Provide configurable exception rules.
+
+⸻
+
+22. Approval Management
+
+Implement enterprise-grade maker-checker workflows.
+
+Roles
+
+* System Administrator
+* Global Treasury Manager
+* Treasury Operations Manager
+* Cash Manager
+* Funding Operator
+* Payment Operations Operator
+* Reconciliation Operator
+* Accountant
+* Financial Controller
+* Auditor
+* Read-Only User
+
+Approval Rules
+
+Support:
+
+* Amount-based approval
+* Entity-based approval
+* Currency-based approval
+* Transaction-type approval
+* Country-based approval
+* Risk-based approval
+* Multi-level approval
+* Delegated approval
+
+Approval Workflow
+
+Maker → Validation → Checker → Additional Approval → Execution → Accounting Posting
+
+Rules:
+
+* Maker cannot approve their own transaction.
+* High-value transactions require multiple approvals.
+* Rejected transactions must return with a rejection reason.
+* All approval decisions must be audited.
+* Approval thresholds must be configurable.
+* Approval delegation must be time-bound.
+
+⸻
+
+23. Banking Integration Framework
+
+Create a modular integration framework.
+
+The system should support future integration with:
+
+* SWIFT
+* ISO 20022
+* Bank APIs
+* Host-to-Host Banking
+* ERP Systems
+* Payment Gateways
+* Core Banking Systems
+* Treasury Management Systems
+* General Ledger Systems
+
+SWIFT / ISO 20022 Support
+
+Implement parsers and sample payloads for:
+
+* camt.052 — Intraday Bank Report
+* camt.053 — Bank Statement
+* camt.054 — Debit/Credit Notification
+* pacs.008 — Customer Credit Transfer
+* pacs.002 — Payment Status Report
+* pacs.004 — Payment Return
+* camt.056 — Payment Cancellation Request
+* pain.001 — Customer Credit Transfer Initiation
+* pain.002 — Payment Status Report
+
+Support:
+
+* Message ingestion
+* Message validation
+* Parsing
+* Mapping
+* Processing
+* Error handling
+* Message storage
+* Message replay
+* Message status tracking
+
+Use versioned schemas and standards-compliant validation.
+
+Do not claim live SWIFT connectivity unless an actual integration has been configured.
+
+⸻
+
+24. Transaction Lifecycle Management
+
+Create a centralized transaction lifecycle engine.
+
+Every transaction must move through a defined lifecycle.
+
+Example:
+
+Created
+→ Validated
+→ Enriched
+→ Matched
+→ Approved
+→ Executed
+→ Accounted
+→ Reconciled
+→ Completed
+
+Alternative statuses:
+
+* Failed
+* Rejected
+* Cancelled
+* Reversed
+* On Hold
+* Pending Investigation
+
+Every transaction must have:
+
+* Unique transaction ID
+* Business reference
+* Source reference
+* Entity
+* Account
+* Currency
+* Amount
+* Business date
+* Value date
+* Status
+* Audit history
+
+The system must support transaction traceability across modules.
+
+⸻
+
+25. Database Design
+
+Create a normalized PostgreSQL database.
+
+Implement appropriate primary keys, foreign keys, unique constraints, indexes, and relationships.
+
+Core Tables
+
+Entity Management
+
+* legal_entities
+* entity_hierarchy
+* entity_limits
+* entity_currency_config
+
+Account Management
+
+* bank_accounts
+* bank_branches
+* banks
+* account_balances
+* account_limits
+* account_gl_mapping
+
+Cash Management
+
+* cash_positions
+* cash_position_snapshots
+* cash_realignment
+* cash_funding
+* cash_adjustments
+* cash_flows
+* cash_projections
+* free_cash_positions
+
+Payments
+
+* payment_transactions
+* payment_instructions
+* payment_events
+* payment_matching
+* payment_matching_rules
+* payment_exceptions
+
+Nostro
+
+* nostro_accounts
+* nostro_balances
+* nostro_statements
+* nostro_reconciliation
+
+Accounting
+
+* chart_of_accounts
+* general_ledger
+* journal_entries
+* journal_entry_lines
+* accounting_events
+* trial_balance
+* accounting_periods
+
+FX
+
+* currencies
+* fx_rates
+* fx_rate_sources
+* fx_valuations
+
+Operations
+
+* operations_tasks
+* exceptions
+* task_comments
+* task_attachments
+* sla_rules
+
+Workflow
+
+* approval_workflows
+* approval_rules
+* approval_requests
+* approval_history
+
+Reporting
+
+* report_definitions
+* report_execution_history
+* saved_report_filters
+
+Security
+
+* users
+* roles
+* permissions
+* user_roles
+* audit_logs
+
+Create complete database migrations and seed scripts.
+
+⸻
+
+26. API Design
+
+Implement REST APIs for every major module.
+
+Example APIs:
+
+Cash Position
+
+GET /api/v1/cash-positions
+
+GET /api/v1/cash-positions/{id}
+
+GET /api/v1/cash-positions/consolidated
+
+GET /api/v1/cash-positions/by-entity/{entityId}
+
+GET /api/v1/cash-positions/by-account/{accountId}
+
+Cash Realignment
+
+POST /api/v1/cash-realignments
+
+GET /api/v1/cash-realignments
+
+GET /api/v1/cash-realignments/{id}
+
+POST /api/v1/cash-realignments/{id}/submit
+
+POST /api/v1/cash-realignments/{id}/approve
+
+POST /api/v1/cash-realignments/{id}/execute
+
+Cash Funding
+
+POST /api/v1/cash-funding
+
+GET /api/v1/cash-funding
+
+POST /api/v1/cash-funding/{id}/approve
+
+POST /api/v1/cash-funding/{id}/execute
+
+Payment Matching
+
+POST /api/v1/payment-matching/process
+
+GET /api/v1/payment-matching/unmatched
+
+POST /api/v1/payment-matching/manual-match
+
+POST /api/v1/payment-matching/unmatch
+
+Accounting
+
+POST /api/v1/accounting/journals
+
+GET /api/v1/accounting/journals
+
+GET /api/v1/accounting/trial-balance
+
+POST /api/v1/accounting/journals/{id}/reverse
+
+Entity Management
+
+GET /api/v1/entities
+
+POST /api/v1/entities
+
+GET /api/v1/entities/hierarchy
+
+GET /api/v1/entities/{id}/consolidated-cash
+
+Reporting
+
+GET /api/v1/reports/cash-position
+
+GET /api/v1/reports/cash-flow
+
+GET /api/v1/reports/forecast
+
+GET /api/v1/reports/reconciliation
+
+Implement pagination, filtering, sorting, validation, authorization, and standardized API errors.
+
+⸻
+
+27. UI/UX Design Requirements
+
+Create a professional enterprise banking UI.
+
+Design Style
+
+* Modern corporate banking interface
+* Clean and minimal
+* Enterprise-grade data tables
+* Professional financial dashboard
+* Responsive desktop, tablet, and mobile layout
+* High information density
+* Consistent typography
+* Accessible design
+* Dark and light themes
+
+Suggested Color Palette
+
+Primary: Navy Blue #102A43
+
+Secondary: Slate Blue #334E68
+
+Accent: Teal #00A6A6
+
+Success: #15803D
+
+Warning: #D97706
+
+Error: #DC2626
+
+Background Light: #F4F7FA
+
+Background Dark: #0B1220
+
+Component Requirements
+
+Create reusable:
+
+* KPI Cards
+* Data Tables
+* Filter Panels
+* Search Components
+* Entity Tree
+* Currency Selector
+* Account Selector
+* Date Selector
+* Transaction Details Drawer
+* Approval Dialog
+* Exception Drawer
+* Audit History Timeline
+* Workflow Status Indicator
+* Financial Charts
+* Pagination
+* Export Controls
+
+Every screen must have:
+
+* Page title
+* Breadcrumb
+* Filters
+* Main content
+* Actions
+* Status indicators
+* Loading state
+* Empty state
+* Error state
+
+Avoid generic placeholder dashboards.
+
+⸻
+
+28. Business Date and Banking Calendar
+
+Implement a business-date management service.
+
+Support:
+
+* Country-specific banking holidays
+* Currency-specific business calendars
+* Entity-specific calendars
+* Weekend rules
+* Cutoff times
+* Value dates
+* Settlement dates
+* Time-zone conversion
+* Business-day adjustments
+
+Support configurable conventions such as:
+
+* Following Business Day
+* Modified Following
+* Preceding Business Day
+
+All date-sensitive financial calculations must use business dates and applicable calendars.
+
+⸻
+
+29. Security and Audit
+
+Implement enterprise security controls.
+
+Security
+
+* Authentication
+* Role-based authorization
+* Entity-level access control
+* Account-level access control
+* Data masking
+* Session management
+* Password policies
+* MFA-ready design
+* API rate limiting
+* Secure secrets management
+* Encryption at rest
+* Encryption in transit
+
+Audit
+
+Audit every critical action.
+
+Include:
+
+* User ID
+* Timestamp
+* Action
+* Entity
+* Transaction ID
+* Before value
+* After value
+* Approval details
+* Source IP where appropriate
+* Correlation ID
+
+Audit events must be append-only.
+
+Users must not be able to modify audit records.
+
+⸻
+
+30. Sample Data and Simulation
+
+Create realistic enterprise sample data.
+
+Seed the system with:
+
+* 15 legal entities
+* 3 parent entities
+* 12 child entities
+* 30 bank accounts
+* 10 currencies
+* 5 banks
+* 200 payment transactions
+* 100 cash flows
+* 50 cash realignment records
+* 30 funding requests
+* 40 reconciliation exceptions
+* 100 accounting journal entries
+* 20 Nostro transactions
+
+Use realistic transaction references, amounts, account balances, and dates.
+
+Do not use real customer banking information.
+
+Create a simulation engine that can generate:
+
+* Incoming payments
+* Outgoing payments
+* Bank statement transactions
+* Cash flow updates
+* FX rate updates
+* Funding events
+* Reconciliation breaks
+* Payment matching events
+
+Simulated events must be clearly identified as simulated.
+
+⸻
+
+31. Functional Requirements
+
+The system must be fully interactive.
+
+Implement:
+
+* Create
+* Read
+* Update
+* Delete where permitted
+* Search
+* Filter
+* Sort
+* Pagination
+* Bulk actions
+* Approve
+* Reject
+* Submit
+* Execute
+* Cancel
+* Reverse
+* Export
+* Import
+* Reconcile
+* Manual match
+* Automated match
+* Generate reports
+
+All forms must include validation.
+
+All actions must be persisted in the database.
+
+Do not implement buttons that only display success messages without performing the underlying action.
+
+All financial actions must create the corresponding business events, status updates, audit entries, and accounting entries where required.
+
+⸻
+
+32. Non-Functional Requirements
+
+Performance
+
+* Efficient database queries
+* Database indexing
+* Pagination for large datasets
+* Redis caching for suitable read operations
+* Asynchronous processing for heavy workflows
+* Real-time event updates
+
+Reliability
+
+* Idempotent processing
+* Duplicate detection
+* Retry mechanisms
+* Transactional database updates
+* Error handling
+* Dead-letter queues
+* Reprocessing support
+
+Scalability
+
+* Modular architecture
+* Stateless API services
+* Event-driven processing
+* Horizontally scalable workers
+* Kubernetes-ready deployment
+
+Financial Accuracy
+
+* Decimal-based financial calculations
+* Configurable currency precision
+* Explicit rounding rules
+* Balanced accounting entries
+* Immutable posted records
+* Business-date-aware calculations
+
+⸻
+
+33. Required Development Deliverables
+
+Generate the complete application.
+
+Deliver:
+
+1. Frontend source code
+2. Backend source code
+3. PostgreSQL schema
+4. Database migrations
+5. Seed data
+6. REST APIs
+7. Authentication
+8. Authorization
+9. Accounting engine
+10. Cash management business logic
+11. Payment matching engine
+12. Entity hierarchy management
+13. Reporting engine
+14. Operations workbench
+15. Exception management
+16. Approval workflows
+17. Banking integration adapters
+18. Docker configuration
+19. Environment configuration
+20. API documentation
+21. Unit tests
+22. Integration tests
+23. End-to-end tests
+24. README
+25. Deployment instructions
+
+⸻
+
+34. Implementation Strategy
+
+Build the application in phases.
+
+Phase 1 — Core Platform
+
+* Application shell
+* Authentication
+* User roles
+* Entity management
+* Bank account management
+* Currency management
+* Dashboard
+* Database
+
+Phase 2 — Cash Management
+
+* Cash position
+* Cash realignment
+* Cash funding
+* Cash adjustments
+* Cash flows
+* Cash projections
+* Free cash
+
+Phase 3 — Payments and Reconciliation
+
+* Payment ingestion
+* Payment matching
+* Manual matching
+* Bank statement processing
+* Nostro management
+* Reconciliation
+
+Phase 4 — Accounting
+
+* Chart of accounts
+* General ledger
+* Journal entries
+* Trial balance
+* Accounting events
+* FX accounting
+* Intercompany accounting
+
+Phase 5 — Operations
+
+* Operations workbench
+* Exception management
+* Approval workflows
+* SLA monitoring
+* Manual operational handling
+
+Phase 6 — Reporting
+
+* Global cash reporting
+* Multi-currency reporting
+* Consolidated reporting
+* Accounting reports
+* Forecast reports
+* Export functionality
+
+Phase 7 — Enterprise Integration
+
+* SWIFT/ISO 20022 adapters
+* ERP integration
+* Bank APIs
+* Real-time event processing
+* Production security
+* Deployment
+
+⸻
+
+35. Final Acceptance Criteria
+
+The application is complete only when:
+
+1. Users can log in securely.
+2. Users can navigate all major modules.
+3. Parent-child entities work correctly.
+4. Bank accounts can be assigned to legal entities.
+5. Cash balances are calculated from transactions.
+6. Cash realignment requests can be created, approved, and executed.
+7. Funding requirements are calculated automatically.
+8. Cash adjustments generate appropriate accounting events.
+9. Cash flow projections are dynamically calculated.
+10. Free cash is derived from configured liquidity rules.
+11. Payment matching works using configurable matching criteria.
+12. Unmatched payments can be manually handled.
+13. Nostro accounts can be monitored and reconciled.
+14. Accounting entries balance.
+15. Multi-currency conversion works with configured FX rates.
+16. Consolidated reporting supports parent-child entities.
+17. Reports can be exported.
+18. Operations users can resolve exceptions.
+19. Maker-checker controls are enforced.
+20. All critical actions are audited.
+21. Data is persisted in PostgreSQL.
+22. The frontend is responsive.
+23. APIs are documented.
+24. The system can run locally using Docker.
+25. All critical workflows have automated tests.
+
+Important: Build the application module by module. Prioritize working financial business logic over superficial UI. Use a clean domain-driven architecture, clear separation between cash management, payments, accounting, reporting, and operations, and reusable components throughout the application.
+
+Start by generating the complete architecture, database schema, module structure, and Global Cash Management Dashboard. Then implement the remaining modules without skipping business logic or leaving non-functional placeholders.

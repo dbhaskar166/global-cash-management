@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Treasury & Cash Operations Platform</title>
+    <meta name="description" content="Enterprise-grade Global Cash Management System (GCMS) supporting multi-entity hierarchies, real-time cash positioning, automated cash realignment & funding, Nostro management, double-entry general ledger, payment matching, operations workbench, and ISO 20022 banking integration." />
+    <meta property="og:title" content="Global Treasury & Cash Operations Platform" />
+    <meta property="og:description" content="Enterprise-grade Global Cash Management System (GCMS) supporting multi-entity hierarchies, real-time cash positioning, automated cash realignment & funding, Nostro management, double-entry general ledger, payment matching, operations workbench, and ISO 20022 banking integration." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Suppress Vite HMR WebSocket connection errors in iframe / reverse-proxy environments
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event.reason;
+        if (
+          reason &&
+          (reason.message?.includes('WebSocket') ||
+           reason.stack?.includes('@vite/client') ||
+           reason.message?.includes('closed without opened'))
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
+      window.addEventListener('error', function(event) {
+        if (
+          event.message?.includes('WebSocket') ||
+          event.filename?.includes('@vite/client') ||
+          event.message?.includes('closed without opened')
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
